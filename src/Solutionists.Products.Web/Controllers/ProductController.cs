@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Logging;
 using Soluitionists.Products.Core.Extensions;
 using Solutionists.Products.Business.Services;
+using Solutionists.Products.Contracts.Dto;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,6 +25,7 @@ namespace Solutionists.Products.Web.Controllers
         }
 
         [ResponseCache(Duration = 120)]
+        [Produces(typeof(IEnumerable<ProductDto>))]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
