@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Solutionists.Products.Contracts\Solutionists.Products.Contracts.csproj" />
     <ProjectReference Include="..\Solutionists.Products.Business\Solutionists.Products.Business.csproj" />
+    <ProjectReference Include="..\Solutionists.Products.Contracts\Solutionists.Products.Contracts.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

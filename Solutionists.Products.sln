@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solutionists.Products.Busin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solutionists.Products.Data", "src\Solutionists.Products.Data\Solutionists.Products.Data.csproj", "{8F2E3B94-44E4-4E8E-B302-5F4040FF8974}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soluitionists.Products.Core", "Soluitionists.Products.Core\Soluitionists.Products.Core.csproj", "{BF981106-9AEF-43B3-9460-95F5F1B48931}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soluitionists.Products.Core", "src\Soluitionists.Products.Core\Soluitionists.Products.Core.csproj", "{BF981106-9AEF-43B3-9460-95F5F1B48931}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solutionists.Products.Contracts", "Solutionists.Products.Contracts\Solutionists.Products.Contracts.csproj", "{00B37065-6B6F-4CC9-805B-054BA403B985}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solutionists.Products.Contracts", "src\Solutionists.Products.Contracts\Solutionists.Products.Contracts.csproj", "{00B37065-6B6F-4CC9-805B-054BA403B985}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
