@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solutionists.Products.Web", "src\Solutionists.Products.Web\Solutionists.Products.Web.csproj", "{9920A798-4795-4EDB-A785-2543AAA163ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solutionists.Products.Business", "Solutionists.Products.Business\Solutionists.Products.Business.csproj", "{ADE6B32A-A8C9-4324-8080-A6EDF300D908}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solutionists.Products.Business", "src\Solutionists.Products.Business\Solutionists.Products.Business.csproj", "{ADE6B32A-A8C9-4324-8080-A6EDF300D908}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solutionists.Products.Data", "Solutionists.Products.Data\Solutionists.Products.Data.csproj", "{8F2E3B94-44E4-4E8E-B302-5F4040FF8974}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solutionists.Products.Data", "src\Solutionists.Products.Data\Solutionists.Products.Data.csproj", "{8F2E3B94-44E4-4E8E-B302-5F4040FF8974}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
