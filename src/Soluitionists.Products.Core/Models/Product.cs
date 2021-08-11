@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Soluitionists.Products.Core
+namespace Soluitionists.Products.Core.Models
 {
     public class Product
     {
