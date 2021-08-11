@@ -2,8 +2,6 @@
 using Microsoft.Extensions.Logging;
 using Soluitionists.Products.Core.Extensions;
 using Solutionists.Products.Business;
-using Solutionists.Products.Contracts;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,18 +17,19 @@ namespace Solutionists.Products.Web.Controllers
 
         public ProductController(
             ILogger<ProductController> logger,
-            IProductService productService
-            )
+            IProductService productService)
         {
             this.logger = logger;
             this.productService = productService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ProductDto>> Get()
+        public async Task<IActionResult> Get()
         {
             var products = await productService.LoadAllProducts();
-            return products.Select(x => x.ToDto());
+            logger.LogInformation($"Fetched {products.Count} products");
+
+            return Ok(products.Select(x => x.ToDto()));
         }
     }
 }
