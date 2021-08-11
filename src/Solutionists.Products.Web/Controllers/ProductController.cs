@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Solutionists.Products.Web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("products")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService productService;
