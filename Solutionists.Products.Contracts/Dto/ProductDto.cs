@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Solutionists.Products.Contracts
+namespace Solutionists.Products.Contracts.Dto
 {
     public class ProductDto
     {

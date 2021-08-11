@@ -28,6 +28,11 @@ namespace Solutionists.Products.Web.Controllers
         {
             var products = await productService.LoadAllProducts();
             logger.LogInformation($"Fetched {products.Count} products");
+            if (!products.Any()) 
+            {
+                return NotFound("No products found");
+            }
+
 
             return Ok(products.Select(x => x.ToDto()));
         }

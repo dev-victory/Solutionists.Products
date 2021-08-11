@@ -1,4 +1,4 @@
-﻿using Solutionists.Products.Contracts;
+﻿using Solutionists.Products.Contracts.Dto;
 
 namespace Soluitionists.Products.Core.Extensions
 {
