@@ -5,18 +5,16 @@
 <table class="table" aria-labelledby="tableLabel" *ngIf="products">
   <thead class="thead-dark">
     <tr>
+      <th></th>
       <th>Name</th>
       <th>Price</th>
-      <th>Stock</th>
-      <th>Image</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
-      <td>{{ product.name }}</td>
-      <td>{{ product.price | currency }}</td>
-      <td>{{ product.stock }}</td>
       <td><img width="70" height="100" src="{{ product.image }}" /></td>
+      <td style="font-weight:bold;vertical-align:middle">{{ product.name }}</td>
+      <td style="vertical-align:middle">{{ product.price | currency }}</td>
     </tr>
   </tbody>
 </table>

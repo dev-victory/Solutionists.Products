@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Soluitionists.Products.Core.Extensions;
-using Solutionists.Products.Business;
+using Solutionists.Products.Business.Services;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +12,6 @@ namespace Solutionists.Products.Web.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService productService;
-
         private readonly ILogger<ProductController> logger;
 
         public ProductController(
@@ -23,6 +22,7 @@ namespace Solutionists.Products.Web.Controllers
             this.productService = productService;
         }
 
+        [ResponseCache(Duration = 120)]
         [HttpGet]
         public async Task<IActionResult> Get()
         {

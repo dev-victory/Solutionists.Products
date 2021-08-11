@@ -3,7 +3,7 @@ using Solutionists.Products.Data.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Solutionists.Products.Business
+namespace Solutionists.Products.Business.Services
 {
     public class ProductService : IProductService
     {
@@ -17,7 +17,7 @@ namespace Solutionists.Products.Business
         public async Task<IReadOnlyCollection<Product>> LoadAllProducts() 
         {
             var productsDict = await productRepo.LoadAllProductsAsync();
-            var products = new List<Product>();
+            List<Product> products = new();
 
             foreach (var item in productsDict)
             {

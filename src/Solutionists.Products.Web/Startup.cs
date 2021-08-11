@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Solutionists.Products.Business;
+using Solutionists.Products.Business.Services;
 using Solutionists.Products.Data.Repositories;
 
 namespace Solutionists.Products.Web
@@ -29,6 +29,13 @@ namespace Solutionists.Products.Web
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            services.AddCors(o=> 
+            {
+                o.AddPolicy("Dev", p =>
+                {
+                    p.WithOrigins(new string[] { "http://localhost:4200" });
+                });
+            });
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
 
@@ -62,7 +69,7 @@ namespace Solutionists.Products.Web
             }
 
             app.UseRouting();
-
+            app.UseCors("Dev");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

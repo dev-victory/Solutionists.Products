@@ -1,24 +1,23 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Product } from '../core/models/product';
+import { ProductService } from '../core/api/product.service';
 
 @Component({
-  selector: 'app-fetch-data',
+  selector: 'app-products-data',
   templateUrl: './products.component.html'
 })
-export class ProductsComponent {
-  public products: WeatherForecast[];
+export class ProductsComponent implements OnInit {
+  public products: Product[];
+  public productService: ProductService;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'products').subscribe(result => {
+  constructor(productsService: ProductService) {
+    this.productService = productsService;
+  }
+
+  ngOnInit(): void {
+    this.productService.getProducts()
+    .subscribe(result => {
       this.products = result;
     }, error => console.error(error));
   }
-}
-
-interface WeatherForecast {
-  id: string;
-  name: string;
-  stock: number;
-  image: string;
-  price: string;
 }
