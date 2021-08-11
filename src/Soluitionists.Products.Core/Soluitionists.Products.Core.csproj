@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Solutionists.Products.Contracts\Solutionists.Products.Contracts.csproj" />
-    <ProjectReference Include="..\Solutionists.Products.Data\Solutionists.Products.Data.csproj" />
   </ItemGroup>
 
 </Project>

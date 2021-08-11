@@ -1,0 +1,20 @@
+<h1 id="tableLabel">Products</h1>
+
+<p *ngIf="!products"><em>Loading...</em></p>
+
+<table class="table" aria-labelledby="tableLabel" *ngIf="products">
+  <thead class="thead-dark">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td><img width="70" height="100" src="{{ product.image }}" /></td>
+      <td style="font-weight:bold;vertical-align:middle">{{ product.name }}</td>
+      <td style="vertical-align:middle">{{ product.price | currency }}</td>
+    </tr>
+  </tbody>
+</table>
