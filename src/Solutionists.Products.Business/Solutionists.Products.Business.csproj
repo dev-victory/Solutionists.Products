@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Soluitionists.Products.Core\Soluitionists.Products.Core.csproj" />
+    <ProjectReference Include="..\Solutionists.Products.Data\Solutionists.Products.Data.csproj" />
+  </ItemGroup>
+
 </Project>
