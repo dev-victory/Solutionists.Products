@@ -1,8 +1,8 @@
-<h1 id="tableLabel">Products</h1>
+<h3 id="tableLabel">Please select a product</h3>
 
 <p *ngIf="!products"><em>Loading...</em></p>
 
-<table class="table" aria-labelledby="tableLabel" *ngIf="products">
+<table class="table table-hover" aria-labelledby="tableLabel" *ngIf="products">
   <thead class="thead-dark">
     <tr>
       <th></th>
@@ -11,8 +11,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products">
-      <td><img width="70" height="100" src="{{ product.image }}" /></td>
+    <tr class="product clickable" *ngFor="let product of products" [routerLink]="['/products', product.id]">
+      <td><img class="product-img" src="{{ product.image }}" /></td>
       <td style="font-weight:bold;vertical-align:middle">{{ product.name }}</td>
       <td style="vertical-align:middle">{{ product.price | currency }}</td>
     </tr>
