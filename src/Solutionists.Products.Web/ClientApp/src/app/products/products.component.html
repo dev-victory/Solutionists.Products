@@ -1,4 +1,4 @@
-<h3 id="tableLabel">Please select a product</h3>
+<h3 id="tableLabel">Choose a product:</h3>
 
 <p *ngIf="!products"><em>Loading...</em></p>
 
@@ -11,10 +11,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="product clickable" *ngFor="let product of products" [routerLink]="['/products', product.id]">
+    <tr class="clickable" *ngFor="let product of products" [routerLink]="['/products', product.id]">
       <td><img class="product-img" src="{{ product.image }}" /></td>
-      <td style="font-weight:bold;vertical-align:middle">{{ product.name }}</td>
-      <td style="vertical-align:middle">{{ product.price | currency }}</td>
+      <td class="align-middle font-weight-bold">{{ product.name }}</td>
+      <td class="align-middle">{{ product.price | currency }}</td>
     </tr>
   </tbody>
 </table>
