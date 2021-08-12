@@ -4,7 +4,7 @@
 - Open the Solution file using Visual Studio
 - Go to `Solutionists.Products.Web` project and set it as startup project
 - Go to the `ClientApp` folder in `Solutionists.Products.Web` project and run `npm install` to download all Angular modules required to build the Angular project
-- Run the `Solutionists.Products.Web` project using Visual Studio
+- Run the `Solutionists.Products.Web` project
 
 The Angular and .NET Core Web API will launch automatically.
 
