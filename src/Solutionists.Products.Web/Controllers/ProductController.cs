@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Soluitionists.Products.Core.Exceptions;
 using Soluitionists.Products.Core.Extensions;
 using Solutionists.Products.Business.Services;
 using Solutionists.Products.Contracts.Dto;
+using Solutionists.Products.Web.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,47 +12,66 @@ using System.Threading.Tasks;
 namespace Solutionists.Products.Web.Controllers
 {
     [ApiController]
-    [Route("products")]
+    [Route("api/products")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService productService;
-        private readonly ILogger<ProductController> logger;
+        private readonly ILoggerManager logger;
 
         public ProductController(
-            ILogger<ProductController> logger,
+            ILoggerManager logger,
             IProductService productService)
         {
             this.logger = logger;
             this.productService = productService;
         }
 
-        // TODO: load cache time from config
         [ResponseCache(Duration = 120)]
         [Produces(typeof(IEnumerable<ProductDto>))]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var products = await productService.LoadAllProducts();
-            logger.LogInformation($"Fetched {products.Count} products");
-            if (!products.Any()) 
+            try
             {
-                return NotFound("No products found");
+                var products = await productService.LoadAllProducts();
+                logger.LogInformation($"Fetched {products.Count} products");
+
+                return Ok(products.Select(x => x.ToDto()));
             }
-
-
-            return Ok(products.Select(x => x.ToDto()));
+            catch (NotFoundException ex)
+            {
+                logger.LogError($"Error: \n{ex.Message}");
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Unknown Error occurred while getting all products, details: \n{ex.Message}");
+                return BadRequest("Unknown error occured");
+            }
         }
 
-        // TODO: load cache time from config
         [ResponseCache(Duration = 360)]
         [Produces(typeof(ProductDto))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var product = await productService.LoadProductById(id);
-            logger.LogInformation($"Fetched product with id {id}");
+            try
+            {
+                var product = await productService.LoadProductById(id);
+                logger.LogInformation($"Fetched product with id {id}");
 
-            return Ok(product);
+                return Ok(product);
+            }
+            catch (NotFoundException ex)
+            {
+                logger.LogError($"Error: \n{ex.Message}");
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Unknown error occurred while getting product by ID {id}, details: \n{ex.Message}");
+                return BadRequest("Unknown error occured");
+            }
         }
     }
 }

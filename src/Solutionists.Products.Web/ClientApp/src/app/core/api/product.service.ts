@@ -10,15 +10,14 @@ export class ProductService {
 
     constructor(httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.httpClient = httpClient;
-        // TODO: revert to baseurl
-        this.baseUrl = 'https://localhost:44347/'; //baseUrl;
+        this.baseUrl = baseUrl;
     }
 
     public getProducts(): Observable<Product[]> {
-        return this.httpClient.get<Product[]>( this.baseUrl + 'products');
+        return this.httpClient.get<Product[]>(`${this.baseUrl}api/products`);
     }
 
     public getProductById(id: string): Observable<Product> {
-        return this.httpClient.get<Product>(`${this.baseUrl}products/${id}`);
+        return this.httpClient.get<Product>(`${this.baseUrl}api/products/${id}`);
     }
 }

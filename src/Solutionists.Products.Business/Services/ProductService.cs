@@ -1,8 +1,9 @@
-﻿using Soluitionists.Products.Core;
+﻿using Soluitionists.Products.Core.Exceptions;
 using Soluitionists.Products.Core.Models;
 using Solutionists.Products.Data.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Solutionists.Products.Business.Services
@@ -16,10 +17,13 @@ namespace Solutionists.Products.Business.Services
             this.productRepo = productRepo;
         }
 
-        public async Task<IReadOnlyCollection<Product>> LoadAllProducts() 
+        public async Task<IReadOnlyCollection<Product>> LoadAllProducts()
         {
             var productsDict = await productRepo.LoadAllProductsAsync();
             List<Product> products = new();
+
+            if (!productsDict?.Any() ?? true)
+                throw new NotFoundException("No products found");
 
             foreach (var item in productsDict)
             {
@@ -31,7 +35,12 @@ namespace Solutionists.Products.Business.Services
 
         public async Task<Product> LoadProductById(Guid id)
         {
-            return await productRepo.LoadProductByIdAsync(id);
+            var product = await productRepo.LoadProductByIdAsync(id);
+
+            if (product == null)
+                throw new NotFoundException($"Product with id '{id}' not found");
+
+            return product;
         }
     }
 }
