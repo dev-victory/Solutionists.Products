@@ -4,9 +4,13 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Solutionists.Products.Business.Services;
 using Solutionists.Products.Data.Repositories;
+using Solutionists.Products.Web.Models;
+using Solutionists.Products.Web.Providers;
+using System.IO;
 
 namespace Solutionists.Products.Web
 {
@@ -29,13 +33,16 @@ namespace Solutionists.Products.Web
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddCors(o=> 
+            var cors = Configuration.GetSection("Cors").Get<CorsSettings>();
+            services.AddCors(o =>
             {
                 o.AddPolicy("Dev", p =>
                 {
-                    p.WithOrigins(new string[] { "http://localhost:4200" });
+                    p.WithOrigins(cors.Domains);
                 });
             });
+
+            services.AddSingleton<ILoggerManager, LoggerManager>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
 
@@ -48,6 +55,7 @@ namespace Solutionists.Products.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

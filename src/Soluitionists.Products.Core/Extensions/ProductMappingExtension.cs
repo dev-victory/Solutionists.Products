@@ -5,7 +5,7 @@ namespace Soluitionists.Products.Core.Extensions
 {
     public static class ProductMappingExtension
     {
-        public static ProductDto ToDto(this Product product) 
+        public static ProductDto ToDto(this Product product)
         {
             return new ProductDto
             {
