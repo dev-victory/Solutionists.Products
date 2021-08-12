@@ -1,5 +1,7 @@
 ﻿using Soluitionists.Products.Core;
+using Soluitionists.Products.Core.Models;
 using Solutionists.Products.Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -25,6 +27,11 @@ namespace Solutionists.Products.Business.Services
             }
 
             return products;
+        }
+
+        public async Task<Product> LoadProductById(Guid id)
+        {
+            return await productRepo.LoadProductByIdAsync(id);
         }
     }
 }

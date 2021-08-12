@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Soluitionists.Products.Core.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Soluitionists.Products.Core
